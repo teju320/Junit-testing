@@ -9,7 +9,8 @@
 
     <name>unit-test</name>
     <url>http://maven.apache.org</url>
-        <dependencies>
+
+    <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -37,6 +38,28 @@
                 </configuration>
             </plugin>
 
+            <!-- JaCoCo Code Coverage Plugin -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version> <!-- Use the latest version -->
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- SonarQube Maven Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
@@ -44,7 +67,7 @@
                 <version>3.9.0.2155</version> <!-- Use the latest version -->
                 <executions>
                     <execution>
-                        <phase>verify</phase> <!-- Run after the test phase -->
+                        <phase>verify</phase> <!-- Run after tests -->
                         <goals>
                             <goal>sonar</goal>
                         </goals>
